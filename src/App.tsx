@@ -1,9 +1,12 @@
 import "./App.css";
+import { Header } from "./components/Header";
+import { HeroSearch } from "./components/HeroSearch";
 
 function App() {
   return (
     <>
-      <button className="p-6 bg-indigo-500">Hello</button>
+      <Header />
+      <HeroSearch />
     </>
   );
 }
