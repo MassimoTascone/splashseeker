@@ -16,6 +16,9 @@ export default {
         "hero-img":
           "url('https://cdn.dribbble.com/users/3281732/screenshots/6727912/samji_illustrator.jpeg')",
       },
+      colors: {
+        "splash-pink": "#d5298a",
+      },
     },
   },
   plugins: [],
