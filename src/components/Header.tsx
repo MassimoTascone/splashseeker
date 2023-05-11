@@ -7,7 +7,9 @@ export function Header() {
         </h1>
       </a>
       <div className="font-sans hidden sm:block text-base">
-        Find your image quicker
+        Find your{" "}
+        <span className="italic text-splash-pink font-semibold">images</span>{" "}
+        quicker
       </div>
     </header>
   );
