@@ -20,10 +20,11 @@ const limiter = rateLimit({
 app.use(limiter);
 
 // Configure the route
-app.get("/getImages", async (req, res) => {
+app.get("/getImages/:count", async (req, res) => {
   try {
+    const count = req.params.count;
     const response = await axios.get(
-      `https://api.unsplash.com/photos?per_page=30`,
+      `https://api.unsplash.com/photos?per_page=${count}`,
       {
         headers: {
           Authorization: `Client-ID ${process.env.UNSPLASH_API_ACCESS_KEY}`,
