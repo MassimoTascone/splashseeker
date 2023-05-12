@@ -8,8 +8,7 @@ export function Header() {
       </a>
       <div className="font-sans hidden sm:block text-base">
         Find your{" "}
-        <span className="italic text-splash-pink font-semibold">images</span>{" "}
-        quicker
+        <span className=" text-splash-pink font-semibold">images</span> quicker
       </div>
     </header>
   );

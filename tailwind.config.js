@@ -20,6 +20,6 @@ export default {
         "splash-pink": "#d5298a",
       },
     },
+    plugins: [],
   },
-  plugins: [],
 };
