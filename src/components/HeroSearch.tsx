@@ -1,4 +1,12 @@
-export function HeroSearch() {
+export function HeroSearch({ searchValue }) {
+  const handleChange = (e) => {
+    if (e.key === "Enter") {
+      console.log("do validate");
+      const value = e.target.value;
+      searchValue(value);
+    }
+  };
+
   return (
     <main>
       <div className="bg-hero-img bg-center  w-screen  min-h-[260px] sm:min-h-[360px] flex justify-center items-center relative">
@@ -13,12 +21,25 @@ export function HeroSearch() {
           by : <span className="underline">Samji_illustrator</span>
         </a>
       </div>
-      <div className="max-w-[628px] w-full mx-auto">
+      <div className="max-w-[628px] w-full mx-auto relative">
         <input
-          className="shadow-xl h-[65px] w-full rounded-lg translate-y-[-50%] text-base px-8 bg-white  focus:outline-splash-pink placeholder:italic placeholder:text-slate-400 relative"
+          className="shadow-xl h-[65px] w-full rounded-lg translate-y-[-50%] text-base px-9 bg-white  focus:outline-splash-pink placeholder:italic placeholder:text-slate-400"
           type="input"
           placeholder="Search your image..."
+          onKeyDown={handleChange}
         />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+          fill="rgb(148 163 184)"
+          className="w-5 h-5 absolute left-3 bottom-[3.5rem] "
+        >
+          <path
+            fillRule="evenodd"
+            d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
+            clipRule="evenodd"
+          />
+        </svg>
       </div>
     </main>
   );

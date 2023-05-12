@@ -19,12 +19,36 @@ const limiter = rateLimit({
 });
 app.use(limiter);
 
-// Configure the route
+// Get random popular images
 app.get("/getImages/:count", async (req, res) => {
+  console.log(req.params);
   try {
     const count = req.params.count;
     const response = await axios.get(
       `https://api.unsplash.com/photos?per_page=${count}`,
+      {
+        headers: {
+          Authorization: `Client-ID ${process.env.UNSPLASH_API_ACCESS_KEY}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    res.json(response.data);
+    console.log("data send to front");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+//Search for img
+app.get("/searchImages/:query", async (req, res) => {
+  try {
+    const query = req.params.query;
+    console.log(query);
+
+    const response = await axios.get(
+      `https://api.unsplash.com/search/photos?query=${query}`,
       {
         headers: {
           Authorization: `Client-ID ${process.env.UNSPLASH_API_ACCESS_KEY}`,
