@@ -1,7 +1,7 @@
 export function HeroSearch() {
   return (
     <main>
-      <div className="bg-hero-img bg-center w-screen bg-pink-300 min-h-[360px] flex justify-center items-center relative">
+      <div className="bg-hero-img bg-center  w-screen  min-h-[260px] sm:min-h-[360px] flex justify-center items-center relative">
         <div className="flex flex-col items-center text-white">
           <h2 className="text-5xl font-black">SplashSeeker</h2>
           <p className="text-xl">Thousands images one click away</p>
