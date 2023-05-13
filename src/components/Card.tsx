@@ -11,8 +11,8 @@ export function Card(props) {
         onMouseLeave={() => setDisplayInfo(false)}
       >
         <img
-          className="rounded-md cursor-pointer"
-          src={`${props.info.urls.small}`}
+          className="rounded-md cursor-pointer hover:brightness-75"
+          src={props.info.urls.small}
           alt={props.info.alt_description}
         />
         {displayInfo && (
@@ -24,7 +24,7 @@ export function Card(props) {
               <img
                 className="rounded-full"
                 src={props.info.user.profile_image.small}
-                alt=""
+                alt={props.info.username}
               />
               <span className="font-sans pl-2 font-semibold">
                 {props.info.user.username}
