@@ -4,7 +4,7 @@ export function Card(props) {
   const [displayInfo, setDisplayInfo] = useState(false);
 
   return (
-    <div>
+    <div className="pb-5">
       <div
         className="relative"
         onMouseEnter={() => setDisplayInfo(true)}
@@ -12,7 +12,7 @@ export function Card(props) {
       >
         <img
           className="rounded-md cursor-pointer"
-          src={props.info.urls.small}
+          src={`${props.info.urls.small}`}
           alt={props.info.alt_description}
         />
         {displayInfo && (
