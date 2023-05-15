@@ -18,7 +18,7 @@ export function Card(props) {
         {displayInfo && (
           <>
             <div className="text-white absolute top-2 left-0 ml-2 font-semibold truncate max-w-[19rem]">
-              {props.info.description || "Untitled"}
+              {props.info.description ?? "Untitled"}
             </div>
             <div className="flex items-center px-3 absolute bottom-2 left-0 text-white w-full">
               <img
