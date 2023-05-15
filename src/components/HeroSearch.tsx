@@ -1,7 +1,6 @@
 export function HeroSearch({ searchValue }) {
   const handleChange = (e) => {
     if (e.key === "Enter") {
-      console.log("do validate");
       const value = e.target.value;
       searchValue(value);
     }
