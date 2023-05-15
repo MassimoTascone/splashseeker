@@ -18,6 +18,7 @@ export default {
       },
       colors: {
         "splash-pink": "#d5298a",
+        "modal-bg": "#0009",
       },
     },
     plugins: [],

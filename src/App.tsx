@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import "./App.css";
 import { Header } from "./components/Header";
 import { HeroSearch } from "./components/HeroSearch";
 import { ImageData } from "./Images.type";
 import { Card } from "./components/Card";
 import { Loading } from "./components/Loading";
+import { Modal } from "./components/Modal";
 
 function App() {
   const [popularImages, SetPopularImages] = useState([]);
@@ -13,6 +13,8 @@ function App() {
   const [nbrImgToLoad, setNbrImgToLoad] = useState(28);
   const [searchValue, setSearchValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [displayModal, setDisplayModal] = useState(false);
+  const [selectedInfo, setSelectedInfo] = useState();
 
   const handleLoadMore = () => {
     setNbrImgToLoad((prevState) => prevState + 20);
@@ -20,6 +22,10 @@ function App() {
 
   const handleSearchBar = (value: string) => {
     setSearchValue(value);
+  };
+  const ModalClick = (imgInfo) => {
+    setDisplayModal((prevState) => !prevState);
+    setSelectedInfo(imgInfo);
   };
 
   useEffect(() => {
@@ -54,6 +60,11 @@ function App() {
     <>
       <Header />
       <HeroSearch searchValue={handleSearchBar} />
+      <Modal
+        display={displayModal}
+        handleClick={ModalClick}
+        selectedInfo={selectedInfo}
+      />
       <section className="mx-8">
         <h3 className="font-sans text-2xl font-medium text-grey-500 mb-8">
           {searchValue === ""
@@ -66,7 +77,7 @@ function App() {
           <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 pt-2 gap-6">
             {(searchValue === "" ? popularImages : searchedImages).map(
               (info: ImageData) => (
-                <Card key={info.id} info={info} />
+                <Card key={info.id} info={info} ModalClick={ModalClick} />
               )
             )}
           </div>
