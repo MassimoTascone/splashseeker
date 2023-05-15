@@ -23,8 +23,8 @@ export function Modal({ display, handleClick, selectedInfo }: ModalProps) {
       document.body.classList.remove("overflow-hidden");
     };
   }, [display]);
-  if (display === false) return null;
 
+  if (display === false) return null;
   return (
     <div className=" bg-modal-bg fixed top-0 left-0 right-0 z-50  w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 flex items-start justify-between ">
       <div className=" w-full max-h-full">
@@ -59,11 +59,13 @@ export function Modal({ display, handleClick, selectedInfo }: ModalProps) {
 
           <div className="grid grid-cols-2 mx-8 px-4 p-6 space-y-6">
             <div className="flex justify-center items-center">
-              <img
-                className="max-h-[38rem]"
-                src={selectedInfo.urls.regular}
-                alt={selectedInfo.alt_description}
-              />
+              <a href={selectedInfo.urls.regular}>
+                <img
+                  className="max-h-[38rem]"
+                  src={selectedInfo.urls.regular}
+                  alt={selectedInfo.alt_description}
+                />
+              </a>
             </div>
             <div>
               <h3>Description</h3>
