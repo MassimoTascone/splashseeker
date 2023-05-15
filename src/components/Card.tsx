@@ -9,6 +9,7 @@ export function Card(props) {
         className="relative"
         onMouseEnter={() => setDisplayInfo(true)}
         onMouseLeave={() => setDisplayInfo(false)}
+        onClick={() => props.ModalClick(props.info)}
       >
         <img
           className="rounded-md cursor-pointer hover:brightness-75"
