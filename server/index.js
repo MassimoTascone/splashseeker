@@ -49,7 +49,7 @@ app.get("/searchImages/:query/:page", async (req, res) => {
     console.log(query, page);
 
     const response = await axios.get(
-      `https://api.unsplash.com/search/photos?per_page=30&page=${page}&query=${query}?`,
+      `https://api.unsplash.com/search/photos?per_page=30&page=${page}&query=${query}`,
       {
         headers: {
           Authorization: `Client-ID ${process.env.UNSPLASH_API_ACCESS_KEY}`,
