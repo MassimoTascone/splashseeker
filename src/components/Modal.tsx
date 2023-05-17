@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ImageData } from "../Images.type";
+import { Loading } from "./Loading";
 
 interface ModalProps {
   display: boolean;
@@ -16,8 +17,6 @@ const formatDate = (uglyDate: string) => {
 
 export function Modal({ display, selectedInfo, closeModal }: ModalProps) {
   const [showDownloadSelect, setShowDownloadSelect] = useState(false);
-
-  console.log(selectedInfo);
 
   useEffect(() => {
     display
@@ -78,17 +77,21 @@ export function Modal({ display, selectedInfo, closeModal }: ModalProps) {
 
           <div className="grid grid-cols-modal mx-8 px-4 p-6 space-y-6">
             <div className="flex justify-center items-center">
-              <a
-                href={selectedInfo.urls.regular}
-                target="_blank"
-                rel="noreferrer noopener"
-              >
-                <img
-                  className="max-h-[30rem]"
-                  src={selectedInfo.urls.regular}
-                  alt={selectedInfo.alt_description}
-                />
-              </a>
+              {!selectedInfo ? (
+                <Loading />
+              ) : (
+                <a
+                  href={selectedInfo.urls.regular}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  <img
+                    className="max-h-[30rem]"
+                    src={selectedInfo.urls.regular}
+                    alt={selectedInfo.alt_description}
+                  />
+                </a>
+              )}
             </div>
             <div className="ml-9 grid">
               <div>

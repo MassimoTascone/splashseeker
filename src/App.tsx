@@ -8,17 +8,18 @@ import { Loading } from "./components/Loading";
 import { Modal } from "./components/Modal";
 
 function App() {
-  const [popularImages, SetPopularImages] = useState([]);
-  const [searchedImages, SetSearchedImages] = useState([]);
+  const [popularImages, setPopularImages] = useState([]);
+  const [searchedImages, setSearchedImages] = useState<any>([]);
   const [nbrImgToLoad, setNbrImgToLoad] = useState<number>(28);
+  const [searchPage, setSearchPage] = useState<number>(1);
   const [searchValue, setSearchValue] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [displayModal, setDisplayModal] = useState<boolean>(false);
   const [selectedInfo, setSelectedInfo] = useState();
 
-  const handleLoadMore = () => {
-    setNbrImgToLoad((prevState) => prevState + 20);
-  };
+  // const handleLoadMore = () => {
+  //   setNbrImgToLoad((prevState) => prevState + 20);
+  // };
 
   const handleSearchBar = (value: string) => {
     setSearchValue(value);
@@ -35,9 +36,13 @@ function App() {
     if (searchValue !== "") {
       setIsLoading(true);
       axios
-        .get(`http://localhost:8000/searchImages/query=${searchValue}`)
+        .get(`http://localhost:8000/searchImages/${searchValue}/${searchPage}`)
         .then((response) => {
-          SetSearchedImages(response.data.results);
+          console.log(response.data.total_pages);
+          setSearchedImages((prevSearchedImages) => [
+            ...prevSearchedImages,
+            ...response.data.results,
+          ]);
           setIsLoading(false);
         })
         .catch((error) => {
@@ -49,7 +54,7 @@ function App() {
       axios
         .get(`http://localhost:8000/getImages/${nbrImgToLoad}/`)
         .then((response) => {
-          SetPopularImages(response.data);
+          setPopularImages(response.data);
           setIsLoading(false);
         })
         .catch((error) => {
@@ -57,7 +62,9 @@ function App() {
           setIsLoading(false);
         });
     }
-  }, [nbrImgToLoad, searchValue]);
+  }, [nbrImgToLoad, searchValue, searchPage]);
+  console.log(searchPage);
+  console.log(searchedImages);
 
   return (
     <>
@@ -80,17 +87,21 @@ function App() {
         ) : (
           <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 pt-2 gap-6">
             {(searchValue === "" ? popularImages : searchedImages).map(
-              (info: ImageData) => (
-                <Card key={info.id} info={info} ModalClick={ModalClick} />
+              (info: ImageData, index) => (
+                <Card
+                  key={`${info.id}-${index}`}
+                  info={info}
+                  ModalClick={ModalClick}
+                />
               )
             )}
           </div>
         )}
       </section>
       <div className="flex justify-center m-8">
-        {(popularImages.length > 0 || searchedImages.length > 0) && (
+        {popularImages.length > 0 && (
           <button
-            onClick={handleLoadMore}
+            onClick={() => setSearchPage((prev) => prev + 1)}
             className="bg-white border-solid border-2 border-splash-pink rounded-xl text-splash-pink font-semibold px-4 py-1 font-sans "
           >
             Load More

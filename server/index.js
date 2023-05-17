@@ -42,13 +42,14 @@ app.get("/getImages/:count", async (req, res) => {
 });
 
 //Search for img
-app.get("/searchImages/:query", async (req, res) => {
+app.get("/searchImages/:query/:page", async (req, res) => {
   try {
     const query = req.params.query;
-    console.log(query);
+    const page = req.params.page;
+    console.log(query, page);
 
     const response = await axios.get(
-      `https://api.unsplash.com/search/photos?query=${query}`,
+      `https://api.unsplash.com/search/photos?per_page=30&page=${page}&query=${query}`,
       {
         headers: {
           Authorization: `Client-ID ${process.env.UNSPLASH_API_ACCESS_KEY}`,
