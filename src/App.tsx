@@ -10,10 +10,10 @@ import { Modal } from "./components/Modal";
 function App() {
   const [popularImages, SetPopularImages] = useState([]);
   const [searchedImages, SetSearchedImages] = useState([]);
-  const [nbrImgToLoad, setNbrImgToLoad] = useState(28);
-  const [searchValue, setSearchValue] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [displayModal, setDisplayModal] = useState(false);
+  const [nbrImgToLoad, setNbrImgToLoad] = useState<number>(28);
+  const [searchValue, setSearchValue] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [displayModal, setDisplayModal] = useState<boolean>(false);
   const [selectedInfo, setSelectedInfo] = useState();
 
   const handleLoadMore = () => {
@@ -26,6 +26,9 @@ function App() {
   const ModalClick = (imgInfo) => {
     setDisplayModal((prevState) => !prevState);
     setSelectedInfo(imgInfo);
+  };
+  const closeModal = () => {
+    setDisplayModal((prevState) => !prevState);
   };
 
   useEffect(() => {
@@ -64,6 +67,7 @@ function App() {
         display={displayModal}
         handleClick={ModalClick}
         selectedInfo={selectedInfo}
+        closeModal={closeModal}
       />
       <section className="mx-8">
         <h3 className="font-sans text-2xl font-medium text-grey-500 mb-8">

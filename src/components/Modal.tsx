@@ -1,24 +1,28 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { ImageData } from "../Images.type";
 
 interface ModalProps {
   display: boolean;
   handleClick: React.MouseEventHandler<HTMLButtonElement>;
+  selectedInfo: ImageData;
+  closeModal: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-const formatDate = (uglyDate) => {
+const formatDate = (uglyDate: string) => {
   const date = new Date(uglyDate);
   const readableDate = date.toLocaleDateString();
   return readableDate;
 };
 
-export function Modal({ display, handleClick, selectedInfo }: ModalProps) {
+export function Modal({ display, selectedInfo, closeModal }: ModalProps) {
+  const [showDownloadSelect, setShowDownloadSelect] = useState(false);
+
   console.log(selectedInfo);
+
   useEffect(() => {
     display
       ? document.body.classList.add("overflow-hidden")
       : document.body.classList.remove("overflow-hidden");
-
-    // Cleanup function to restore scrolling on unmount
     return () => {
       document.body.classList.remove("overflow-hidden");
     };
@@ -26,21 +30,36 @@ export function Modal({ display, handleClick, selectedInfo }: ModalProps) {
 
   if (display === false) return null;
   return (
-    <div className=" bg-modal-bg fixed top-0 left-0 right-0 z-50  w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 flex items-start justify-between ">
-      <div className=" w-full max-h-full">
-        <div className="bg-white rounded-lg shadow ">
-          <div className="flex justify-between p-4 border-b rounded-t ">
+    <div className="bg-modal-bg fixed top-0 left-0 right-0 z-50  w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 font-sans">
+      <div className="flex items-start justify-center ">
+        <div className="bg-white rounded-lg shadow relative">
+          <div className="flex justify-between items-center p-4 rounded-t ">
             <div>
-              <h3 className=" text-xl font-semibold text-gray-900 ">
+              <h3 className=" text-xl font-semibold text-gray-900 truncate max-w-[800px]">
                 {selectedInfo.description ?? "Untitled"}
               </h3>
-              <h4>{selectedInfo.user.username}</h4>
+              <div className="flex items-center">
+                <img
+                  className="rounded-full mr-2"
+                  src={selectedInfo.user.profile_image.small}
+                  alt={selectedInfo.username}
+                />
+                <h4 className="text-sm hover:underline">
+                  <a
+                    href={selectedInfo.user.links.html}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
+                    {selectedInfo.user.username}
+                  </a>
+                </h4>
+              </div>
             </div>
 
             <button
               type="button"
-              className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center d "
-              onClick={handleClick}
+              className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-4 right-4 inline-flex items-center"
+              onClick={closeModal}
             >
               <svg
                 className="w-5 h-5"
@@ -57,21 +76,84 @@ export function Modal({ display, handleClick, selectedInfo }: ModalProps) {
             </button>
           </div>
 
-          <div className="grid grid-cols-2 mx-8 px-4 p-6 space-y-6">
+          <div className="grid grid-cols-modal mx-8 px-4 p-6 space-y-6">
             <div className="flex justify-center items-center">
-              <a href={selectedInfo.urls.regular}>
+              <a
+                href={selectedInfo.urls.regular}
+                target="_blank"
+                rel="noreferrer noopener"
+              >
                 <img
-                  className="max-h-[38rem]"
+                  className="max-h-[30rem]"
                   src={selectedInfo.urls.regular}
                   alt={selectedInfo.alt_description}
                 />
               </a>
             </div>
-            <div>
-              <h3>Description</h3>
-              <p>{selectedInfo.alt_description}</p>
-              <h3>Created</h3>
-              <p>{formatDate(selectedInfo.created_at)}</p>
+            <div className="ml-9 grid">
+              <div>
+                <h3 className="text-md font-bold">Description</h3>
+                <p>{selectedInfo.alt_description}</p>
+              </div>
+              <div>
+                <h3 className="text-md font-bold">Created</h3>
+                <p>{formatDate(selectedInfo.created_at)}</p>
+              </div>
+              <div>
+                <h3 className="text-md font-bold">Format</h3>
+                <p>
+                  {selectedInfo.width} x {selectedInfo.height}
+                </p>
+              </div>
+              <div className="items-center justify-center">
+                <button
+                  id="dropdownDefaultButton"
+                  data-dropdown-toggle="dropdown"
+                  className="text-white bg-splash-pink hover:bg-splash-pink-dark focus:outline-none font-medium text-lg rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center"
+                  type="button"
+                  onClick={() =>
+                    setShowDownloadSelect((prevState) => !prevState)
+                  }
+                >
+                  Download
+                  <svg
+                    className="w-4 h-4 ml-2"
+                    aria-hidden="true"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M19 9l-7 7-7-7"
+                    ></path>
+                  </svg>
+                </button>
+                {showDownloadSelect && (
+                  <div
+                    id="dropdown"
+                    className="z-10  bg-white divide-y divide-gray-100 rounded-lg shadow w-44 max-w-[115px]"
+                  >
+                    <ul
+                      className="py-2 text-sm text-gray-700 "
+                      aria-labelledby="dropdownDefaultButton"
+                    >
+                      {}
+                      <li>
+                        <a
+                          href="#"
+                          className="block px-4 py-2 hover:bg-gray-100 "
+                        >
+                          Dashboard
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>

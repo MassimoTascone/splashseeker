@@ -1,7 +1,11 @@
-export function HeroSearch({ searchValue }) {
-  const handleChange = (e) => {
+interface SearchProps {
+  searchValue: (value: string) => void;
+}
+
+export function HeroSearch({ searchValue }: SearchProps) {
+  const handleChange = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      const value = e.target.value;
+      const value = e.currentTarget.value;
       searchValue(value);
     }
   };
@@ -22,7 +26,7 @@ export function HeroSearch({ searchValue }) {
       </div>
       <div className="max-w-[628px] w-full mx-auto relative">
         <input
-          className="shadow-xl h-[65px] w-full rounded-lg translate-y-[-50%] text-base px-9 bg-white  focus:outline-splash-pink placeholder:italic placeholder:text-slate-400"
+          className="shadow-xl h-[65px] w-full rounded-lg translate-y-[-50%] text-base px-9 bg-white  focus:ring-4 focus:ring-splash-pink focus:outline-none placeholder:italic placeholder:text-slate-400"
           type="input"
           placeholder="Search your image..."
           onKeyDown={handleChange}

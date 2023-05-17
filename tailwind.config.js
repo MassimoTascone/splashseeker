@@ -17,8 +17,14 @@ export default {
           "url('https://cdn.dribbble.com/users/3281732/screenshots/6727912/samji_illustrator.jpeg')",
       },
       colors: {
-        "splash-pink": "#d5298a",
+        "splash-pink-light": "#DA4298",
+        "splash-pink": "#D5298a",
+        "splash-pink-dark": "#B32374",
         "modal-bg": "#0009",
+      },
+      gridTemplateColumns: {
+        // Complex site-specific column configuration
+        modal: "repeat(2, minmax(0, 450px))",
       },
     },
     plugins: [],
