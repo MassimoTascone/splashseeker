@@ -1,7 +1,13 @@
 import { useState } from "react";
+import { ImageData } from "../Images.type";
 
-export function Card(props) {
-  const [displayInfo, setDisplayInfo] = useState(false);
+interface CardsProps {
+  info: ImageData;
+  ModalClick: (imgInfo: ImageData) => void;
+}
+
+export function Card({ info, ModalClick }: CardsProps) {
+  const [displayInfo, setDisplayInfo] = useState<boolean>(false);
 
   return (
     <div className="pb-5">
@@ -9,29 +15,29 @@ export function Card(props) {
         className="relative"
         onMouseEnter={() => setDisplayInfo(true)}
         onMouseLeave={() => setDisplayInfo(false)}
-        onClick={() => props.ModalClick(props.info)}
+        onClick={() => ModalClick(info)}
       >
         <img
           className="rounded-md cursor-pointer hover:brightness-75"
-          src={props.info.urls.small}
-          alt={props.info.alt_description}
+          src={info.urls.small}
+          alt={info.alt_description}
         />
         {displayInfo && (
           <>
             <div className="text-white absolute top-2 left-0 ml-2 font-semibold truncate max-w-[19rem]">
-              {props.info.description ?? "Untitled"}
+              {info.description ?? "Untitled"}
             </div>
             <div className="flex items-center px-3 absolute bottom-2 left-0 text-white w-full">
               <img
                 className="rounded-full"
-                src={props.info.user.profile_image.small}
-                alt={props.info.username}
+                src={info.user.profile_image.small}
+                alt={info.username}
               />
               <span className="font-sans pl-2 font-semibold">
-                {props.info.user.username}
+                {info.user.username}
               </span>
               <span className="text-white ml-auto flex items-center justify-center text-xs">
-                {props.info.likes}
+                {info.likes}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
