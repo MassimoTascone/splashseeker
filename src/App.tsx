@@ -34,7 +34,7 @@ function App() {
       setIsLoading(true);
       axios
         .get(
-          `https://splashseeker-backend.onrender.com//searchImages/${searchValue}/${searchPage}`
+          `https://splashseeker-backend.onrender.com/searchImages/${searchValue}/${searchPage}`
         )
         .then((response) => {
           console.log(response.data.total_pages);
@@ -52,7 +52,7 @@ function App() {
       setIsLoading(true);
       axios
         .get(
-          `https://splashseeker-backend.onrender.com//getImages/${nbrImgToLoad}/`
+          `https://splashseeker-backend.onrender.com/getImages/${nbrImgToLoad}/`
         )
         .then((response) => {
           setPopularImages(response.data);
