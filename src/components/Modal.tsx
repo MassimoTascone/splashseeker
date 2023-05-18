@@ -4,7 +4,6 @@ import { Loading } from "./Loading";
 
 interface ModalProps {
   display: boolean;
-  handleClick: React.MouseEventHandler<HTMLButtonElement>;
   selectedInfo: ImageData;
   closeModal: React.MouseEventHandler<HTMLButtonElement>;
 }

@@ -10,21 +10,18 @@ import { Modal } from "./components/Modal";
 function App() {
   const [popularImages, setPopularImages] = useState([]);
   const [searchedImages, setSearchedImages] = useState<any>([]);
-  const [nbrImgToLoad, setNbrImgToLoad] = useState<number>(28);
   const [searchPage, setSearchPage] = useState<number>(1);
   const [searchValue, setSearchValue] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [displayModal, setDisplayModal] = useState<boolean>(false);
-  const [selectedInfo, setSelectedInfo] = useState();
+  const [selectedInfo, setSelectedInfo] = useState<ImageData | any>();
 
-  // const handleLoadMore = () => {
-  //   setNbrImgToLoad((prevState) => prevState + 20);
-  // };
+  const nbrImgToLoad = 28;
 
   const handleSearchBar = (value: string) => {
     setSearchValue(value);
   };
-  const ModalClick = (imgInfo) => {
+  const ModalClick = (imgInfo: ImageData) => {
     setDisplayModal((prevState) => !prevState);
     setSelectedInfo(imgInfo);
   };
@@ -39,7 +36,7 @@ function App() {
         .get(`http://localhost:8000/searchImages/${searchValue}/${searchPage}`)
         .then((response) => {
           console.log(response.data.total_pages);
-          setSearchedImages((prevSearchedImages) => [
+          setSearchedImages((prevSearchedImages: any) => [
             ...prevSearchedImages,
             ...response.data.results,
           ]);
@@ -64,7 +61,7 @@ function App() {
     }
   }, [nbrImgToLoad, searchValue, searchPage]);
   console.log(searchPage);
-  console.log(searchedImages);
+  console.log(searchedImages.length > 0);
 
   return (
     <>
@@ -72,7 +69,6 @@ function App() {
       <HeroSearch searchValue={handleSearchBar} />
       <Modal
         display={displayModal}
-        handleClick={ModalClick}
         selectedInfo={selectedInfo}
         closeModal={closeModal}
       />
@@ -86,8 +82,8 @@ function App() {
           <Loading />
         ) : (
           <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 pt-2 gap-6">
-            {(searchValue === "" ? popularImages : searchedImages).map(
-              (info: ImageData, index) => (
+            {(searchValue === "" ? popularImages : searchedImages)?.map(
+              (info: ImageData, index: number) => (
                 <Card
                   key={`${info.id}-${index}`}
                   info={info}
@@ -99,7 +95,7 @@ function App() {
         )}
       </section>
       <div className="flex justify-center m-8">
-        {popularImages.length > 0 && (
+        {searchedImages.length > 0 && (
           <button
             onClick={() => setSearchPage((prev) => prev + 1)}
             className="bg-white border-solid border-2 border-splash-pink rounded-xl text-splash-pink font-semibold px-4 py-1 font-sans "
