@@ -33,7 +33,9 @@ function App() {
     if (searchValue !== "") {
       setIsLoading(true);
       axios
-        .get(`http://localhost:8000/searchImages/${searchValue}/${searchPage}`)
+        .get(
+          `https://splashseeker.vercel.app/searchImages/${searchValue}/${searchPage}`
+        )
         .then((response) => {
           console.log(response.data.total_pages);
           setSearchedImages((prevSearchedImages: any) => [
@@ -49,7 +51,7 @@ function App() {
     } else {
       setIsLoading(true);
       axios
-        .get(`http://localhost:8000/getImages/${nbrImgToLoad}/`)
+        .get(`https://splashseeker.vercel.app/getImages/${nbrImgToLoad}/`)
         .then((response) => {
           setPopularImages(response.data);
           setIsLoading(false);
