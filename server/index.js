@@ -9,7 +9,11 @@ const port = process.env.PORT;
 
 // Configure CORS
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://splashseeker.vercel.app",
+  })
+);
 
 //Configure rate limiting
 const limiter = rateLimit({
