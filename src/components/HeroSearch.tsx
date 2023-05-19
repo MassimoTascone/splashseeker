@@ -18,13 +18,13 @@ export function HeroSearch({ searchValue }: SearchProps) {
           <p className="text-xl">Thousands images one click away</p>
         </div>
         <a
-          className="text-white absolute bottom-1 right-1 font-sans text-xs"
+          className="text-white absolute bottom-1 right-1 font-sans text-xs hidden md:block"
           href="https://dribbble.com/shots/6727912/attachments/6727912-Postmodernism?mode=media"
         >
           by : <span className="underline">Samji_illustrator</span>
         </a>
       </div>
-      <div className="max-w-[628px] w-full mx-auto relative">
+      <div className="max-w-[628px]  w-11/12 md:w-full mx-auto relative">
         <input
           className="shadow-xl h-[65px] w-full rounded-lg translate-y-[-50%] text-base px-9 bg-white  focus:ring-4 focus:ring-splash-pink focus:outline-none placeholder:italic placeholder:text-slate-400"
           type="input"

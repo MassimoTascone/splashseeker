@@ -7,6 +7,13 @@ import { Card } from "./components/Card";
 import { Loading } from "./components/Loading";
 import { Modal } from "./components/Modal";
 
+// to remove
+
+const URL = import.meta.env.PROD
+  ? "https://splashseeker-backend.onrender.com"
+  : "http://localhost:8000";
+
+console.log(import.meta.env.PROD);
 function App() {
   const [popularImages, setPopularImages] = useState([]);
   const [searchedImages, setSearchedImages] = useState<any>([]);
@@ -33,11 +40,8 @@ function App() {
     if (searchValue !== "") {
       setIsLoading(true);
       axios
-        .get(
-          `https://splashseeker-backend.onrender.com/searchImages/${searchValue}/${searchPage}`
-        )
+        .get(`${URL}/searchImages/${searchValue}/${searchPage}`)
         .then((response) => {
-          console.log(response.data.total_pages);
           setSearchedImages((prevSearchedImages: any) => [
             ...prevSearchedImages,
             ...response.data.results,
@@ -51,9 +55,7 @@ function App() {
     } else {
       setIsLoading(true);
       axios
-        .get(
-          `https://splashseeker-backend.onrender.com/getImages/${nbrImgToLoad}/`
-        )
+        .get(`${URL}/getImages/${nbrImgToLoad}/`)
         .then((response) => {
           setPopularImages(response.data);
           setIsLoading(false);
@@ -64,8 +66,6 @@ function App() {
         });
     }
   }, [nbrImgToLoad, searchValue, searchPage]);
-  console.log(searchPage);
-  console.log(searchedImages.length > 0);
 
   return (
     <>

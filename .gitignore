@@ -25,3 +25,4 @@ dist-ssr
 
 #Fake Data
 mockedData.json
+.env

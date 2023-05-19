@@ -28,12 +28,12 @@ export function Modal({ display, selectedInfo, closeModal }: ModalProps) {
 
   if (display === false) return null;
   return (
-    <div className="bg-modal-bg fixed top-0 left-0 right-0 z-50  w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 font-sans">
-      <div className="flex items-start justify-center ">
-        <div className="bg-white rounded-lg shadow relative">
+    <div className="bg-modal-bg fixed top-0 left-0 right-0 z-50  w-full h-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 font-sans">
+      <div className="flex items-start justify-center">
+        <div className="bg-white rounded-lg shadow relative max-w-[90vw]">
           <div className="flex justify-between items-center p-4 rounded-t ">
             <div>
-              <h3 className=" text-xl font-semibold text-gray-900 truncate max-w-[800px]">
+              <h3 className=" text-xl font-semibold text-gray-900 truncate max-w-[345px] md:max-w-[800px]">
                 {selectedInfo.description ?? "Untitled"}
               </h3>
               <div className="flex items-center">
@@ -74,11 +74,9 @@ export function Modal({ display, selectedInfo, closeModal }: ModalProps) {
             </button>
           </div>
 
-          <div className="grid grid-cols-modal mx-8 px-4 p-6 space-y-6">
+          <div className="grid lg:grid-cols-modal mx-8 px-4 p-6 space-y-6">
             <div className="flex justify-center items-center">
-              {!selectedInfo ? (
-                <Loading />
-              ) : (
+              {selectedInfo ? (
                 <a
                   href={selectedInfo.urls.regular}
                   target="_blank"
@@ -90,9 +88,11 @@ export function Modal({ display, selectedInfo, closeModal }: ModalProps) {
                     alt={selectedInfo.alt_description}
                   />
                 </a>
+              ) : (
+                <Loading />
               )}
             </div>
-            <div className="ml-9 grid">
+            <div className=" md:ml-9 grid">
               <div>
                 <h3 className="text-md font-bold">Description</h3>
                 <p>{selectedInfo.alt_description}</p>
@@ -101,7 +101,7 @@ export function Modal({ display, selectedInfo, closeModal }: ModalProps) {
                 <h3 className="text-md font-bold">Created</h3>
                 <p>{formatDate(selectedInfo.created_at)}</p>
               </div>
-              <div>
+              <div className="mb-2">
                 <h3 className="text-md font-bold">Format</h3>
                 <p>
                   {selectedInfo.width} x {selectedInfo.height}
@@ -143,13 +143,28 @@ export function Modal({ display, selectedInfo, closeModal }: ModalProps) {
                       className="py-2 text-sm text-gray-700 "
                       aria-labelledby="dropdownDefaultButton"
                     >
-                      {}
                       <li>
                         <a
                           href="#"
                           className="block px-4 py-2 hover:bg-gray-100 "
                         >
-                          Dashboard
+                          Small
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          className="block px-4 py-2 hover:bg-gray-100 "
+                        >
+                          Regular
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          className="block px-4 py-2 hover:bg-gray-100 "
+                        >
+                          Raw
                         </a>
                       </li>
                     </ul>
