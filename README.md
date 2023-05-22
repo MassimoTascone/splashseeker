@@ -4,7 +4,7 @@
 
 <div align="center">
   <a href="https://splashseeker.vercel.app">
-    <img src="https://imgur.com/FdGhQFP" alt="Website Preview" width="400" height="400">
+    <img src="https://i.imgur.com/FdGhQFP.png" alt="Website Preview" width="400" height="400">
   </a>
  </div>
  
@@ -55,6 +55,3 @@ The **frontend** application is deployed on [Vercel](https://vercel.com/), a clo
 - [ ] Smoother show more images feature
 - [ ] Find a better platform to host proxy server (no sleep mode ?)
 - [ ] Try reactQuery(TanStack) as an alternative to useEffect
-
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
