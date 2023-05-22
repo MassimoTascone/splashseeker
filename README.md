@@ -3,12 +3,7 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 [![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
 [![Express](https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com/)
-
-
-
-
-
-
+[![Render](https://img.shields.io/badge/Render-222222?style=for-the-badge&logo=render&logoColor=white)](https://render.com/)
 
 
 # SplashSeeker
