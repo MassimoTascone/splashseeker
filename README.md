@@ -1,27 +1,29 @@
 
-
 # SplashSeeker
 
 <div align="center">
   <a href="https://splashseeker.vercel.app">
-    <img src="https://i.imgur.com/FdGhQFP.png" alt="Website Preview" width="600" height="400">
+    <img src="https://i.imgur.com/FdGhQFP.png" alt="Website Preview" width="800" height="450">
   </a>
  </div>
  
  <br/>
 
-SplashSeeker is a frontend application developed as a learning project, using React and TypeScript. It allows users to explore and search for high-quality images from the Unsplash API, a popular platform for sharing photography.
+**SplashSeeker** is a frontend application developed as a learning project, using **React** and **TypeScript**. It allows users to explore and search for high-quality images from the **Unsplash API**, a popular platform for sharing photography.
+
 
 I undertook the development of SplashSeeker as a learning project to enhance my skills in front-end web development using React and TypeScript. By building a real-world application that interacts with external APIs, I aimed to gain practical experience in working with data retrieval, user interface design, and state management. Through this project, I sought to deepen my understanding of React's component-based architecture, TypeScript's static typing capabilities, and the integration of various libraries and tools commonly used in modern web development such as Tailwind.
 
 ## Accessing the Deployed Website
 
 To access the deployed website, please visit the following URL: [SplashSeeker](https://splashseeker.vercel.app/)
+
 Simply click on the provided link, and it will take you to the live version of the SplashSeeker website. Feel free to explore and enjoy.
 
 ## Features
 
-- Browse and search for a wide variety of images using keywords and filters.
+- Browse and search for a wide variety of images using keywords.
+- Show more images when searching for a keywords (show more button)
 - View detailed information about each image, including the photographer, likes, format, date of upload,...
 - Responsive and user-friendly interface for seamless browsing and navigation.
 
