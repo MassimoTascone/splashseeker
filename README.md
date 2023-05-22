@@ -4,7 +4,7 @@
 
 <div align="center">
   <a href="https://splashseeker.vercel.app">
-    <img src="https://i.imgur.com/FdGhQFP.png" alt="Website Preview" width="400" height="400">
+    <img src="https://i.imgur.com/FdGhQFP.png" alt="Website Preview" width="600" height="400">
   </a>
  </div>
  
