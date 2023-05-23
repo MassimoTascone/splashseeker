@@ -32,6 +32,7 @@ Simply click on the provided link, and it will take you to the live version of t
 - Browse and search for a wide variety of images using keywords.
 - Show more images when searching for a keywords (show more button)
 - View detailed information about each image, including the photographer, likes, format, date of upload,...
+-  Download the image that you want in jpeg format (download button)
 - Responsive and user-friendly interface for seamless browsing and navigation.
 
 ## Backend
@@ -43,7 +44,7 @@ To fetch the image data from the Unsplash API, a [backend server is implemented 
 ## Technologies Used
 
 - **React**: A JavaScript library for building interactive user interfaces.
-  - React Functionnal components, React hooks: "useState, useEffect, ..."
+  - React Functionnal components, React hooks: "useState, useEffect, custom hooks ..."
 - **TypeScript**: A typed superset of JavaScript that adds static typing and improved tooling.
 - **Node.js**: A JavaScript runtime for executing server-side applications.
 - **Express**: A flexible and minimalistic web application framework for Node.js.
@@ -59,7 +60,7 @@ To fetch the image data from the Unsplash API, a [backend server is implemented 
 The **frontend** application is deployed on [Vercel](https://vercel.com/), a cloud platform for hosting static websites. The **backend** server is deployed on [Render](https://render.com/), a cloud platform for scalable and reliable web applications.
 ## Things to improve
 
-- [ ] Add a Download feature for each images
+- [X] Add a Download feature for each images
 - [ ] Unit testing 
 - [ ] Smoother show more images feature
 - [ ] Find a better platform to host proxy server (no sleep mode ?)
