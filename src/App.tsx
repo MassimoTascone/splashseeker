@@ -6,8 +6,8 @@ import { ImageData } from "./Images.type";
 import { Card } from "./components/Card";
 import { Loading } from "./components/Loading";
 import { Modal } from "./components/Modal";
-
-// to remove
+import { LoadButton } from "./components/LoadButton";
+import { Footer } from "./components/Footer";
 
 const URL = import.meta.env.PROD
   ? "https://splashseeker-backend.onrender.com"
@@ -98,16 +98,11 @@ function App() {
           </div>
         )}
       </section>
-      <div className="flex justify-center m-8">
-        {searchedImages.length > 0 && (
-          <button
-            onClick={() => setSearchPage((prev) => prev + 1)}
-            className="bg-white border-solid border-2 border-splash-pink rounded-xl text-splash-pink font-semibold px-4 py-1 font-sans "
-          >
-            Load More
-          </button>
-        )}
-      </div>
+      <LoadButton
+        searchedImages={searchedImages}
+        setSearchPage={setSearchPage}
+      />
+      <Footer />
     </>
   );
 }
