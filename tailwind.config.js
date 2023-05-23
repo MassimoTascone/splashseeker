@@ -20,6 +20,7 @@ export default {
         "splash-pink-light": "#DA4298",
         "splash-pink": "#D5298a",
         "splash-pink-dark": "#B32374",
+        "splash-purple": "#2b2f54",
         "modal-bg": "#0009",
       },
       gridTemplateColumns: {
