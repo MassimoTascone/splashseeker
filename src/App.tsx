@@ -10,7 +10,9 @@ import { LoadButton } from "./components/LoadButton";
 import { Footer } from "./components/Footer";
 import { Suggestions } from "./components/Suggestions";
 
-const URL = import.meta.env.URL;
+const URL = import.meta.env.PROD
+  ? "https://splashseeker-backend.onrender.com"
+  : "http://localhost:8000";
 
 function App() {
   const [popularImages, setPopularImages] = useState([]);
