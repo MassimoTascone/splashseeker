@@ -18,7 +18,15 @@ export function Footer() {
           &copy; 2023 SplashSeeker.
         </p>
         <p className="flex justify-center items-center">
-          Made by Massimo Tascone
+          Made by
+          <a
+            className="hover:underline ml-1"
+            href="https://github.com/MassimoTascone"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            Massimo Tascone
+          </a>
         </p>
       </footer>
     </>

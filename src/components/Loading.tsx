@@ -1,6 +1,12 @@
-export function Loading() {
+import { ReactNode } from "react";
+
+interface LoadingProps {
+  children?: ReactNode;
+}
+
+export function Loading({ children }: LoadingProps) {
   return (
-    <div role="status" className="flex justify-center">
+    <div role="status" className="flex flex-col justify-center items-center">
       <svg
         aria-hidden="true"
         className="w-12 h-12 mr-2 text-gray-200 animate-spin dark:text-gray-400 fill-splash-pink"
@@ -17,7 +23,7 @@ export function Loading() {
           fill="currentFill"
         />
       </svg>
-      <span className="sr-only">Loading...</span>
+      {children && <p className="text-sm text-gray-400 mt-4">{children}</p>}
     </div>
   );
 }

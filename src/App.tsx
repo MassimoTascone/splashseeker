@@ -8,12 +8,10 @@ import { Loading } from "./components/Loading";
 import { Modal } from "./components/Modal";
 import { LoadButton } from "./components/LoadButton";
 import { Footer } from "./components/Footer";
+import { Suggestions } from "./components/Suggestions";
 
-const URL = import.meta.env.PROD
-  ? "https://splashseeker-backend.onrender.com"
-  : "http://localhost:8000";
+const URL = import.meta.env.URL;
 
-console.log(import.meta.env.PROD);
 function App() {
   const [popularImages, setPopularImages] = useState([]);
   const [searchedImages, setSearchedImages] = useState<any>([]);
@@ -34,6 +32,10 @@ function App() {
   };
   const closeModal = () => {
     setDisplayModal((prevState) => !prevState);
+  };
+  const handleClickSearchSuggestions = (e: React.MouseEvent<HTMLLIElement>) => {
+    const suggestionValue = (e.target as HTMLLIElement).innerText;
+    setSearchValue(suggestionValue);
   };
 
   useEffect(() => {
@@ -71,6 +73,7 @@ function App() {
     <>
       <Header />
       <HeroSearch searchValue={handleSearchBar} />
+      <Suggestions searchTerm={handleClickSearchSuggestions} />
       <Modal
         display={displayModal}
         selectedInfo={selectedInfo}
@@ -83,7 +86,7 @@ function App() {
             : `"${searchValue.charAt(0).toUpperCase()}${searchValue.slice(1)}"`}
         </h3>
         {isLoading ? (
-          <Loading />
+          <Loading>Please wait, this will only take a few seconds</Loading>
         ) : (
           <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 pt-2 gap-6">
             {(searchValue === "" ? popularImages : searchedImages)?.map(
