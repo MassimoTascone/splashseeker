@@ -8,7 +8,6 @@ interface CardsProps {
 
 export function Card({ info, ModalClick }: CardsProps) {
   const [displayInfo, setDisplayInfo] = useState<boolean>(false);
-
   return (
     <div className="pb-5">
       <div

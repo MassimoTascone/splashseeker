@@ -57,12 +57,13 @@ const randomSearchTerms = searchTerms.sort(() => Math.random() - 0.5);
 
 export function Suggestions({ searchTerm }: SuggestionsProps) {
   return (
-    <ul className="flex flex-wrap justify-center gap-2 md:gap-5">
-      <li className="bold">Suggestions : </li>
-      {randomSearchTerms.slice(0, 5).map((term) => (
+    <ul className="flex flex-wrap justify-center items-center gap-2 md:gap-5">
+      <li className="text-gray-700 bold text-sm">Suggestions: </li>
+      {randomSearchTerms.slice(0, 6).map((term, index) => (
         <li
           className="text-splash-pink hover:text-splash-pink-dark cursor-pointer"
           onClick={searchTerm}
+          key={index}
         >
           {term}
         </li>

@@ -46,10 +46,7 @@ function App() {
       axios
         .get(`${URL}/searchImages/${searchValue}/${searchPage}`)
         .then((response) => {
-          setSearchedImages((prevSearchedImages: any) => [
-            ...prevSearchedImages,
-            ...response.data.results,
-          ]);
+          setSearchedImages(response.data.results);
           setIsLoading(false);
         })
         .catch((error) => {
@@ -70,6 +67,7 @@ function App() {
         });
     }
   }, [nbrImgToLoad, searchValue, searchPage]);
+  console.log({ searchedImages });
 
   return (
     <>
