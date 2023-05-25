@@ -3,9 +3,9 @@ interface SearchProps {
 }
 
 export function HeroSearch({ searchValue }: SearchProps) {
-  const handleChange = (e: React.KeyboardEvent<HTMLInputElement | void>) => {
+  const handleChange = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      const value = e.currentTarget.value;
+      const value = (e.target as HTMLInputElement).value;
       searchValue(value);
     }
   };
