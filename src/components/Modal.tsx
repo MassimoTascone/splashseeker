@@ -31,7 +31,7 @@ export function Modal({ display, selectedInfo, closeModal }: ModalProps) {
         <div className="bg-white rounded-lg shadow relative max-w-[90vw]">
           <div className="flex justify-between items-center pt-4 px-4 rounded-t ">
             <div>
-              <h3 className=" text-xl font-semibold text-gray-900 truncate max-w-[345px] md:max-w-[800px]">
+              <h3 className=" text-xl font-semibold text-gray-900 truncate max-w-[200px] md:max-w-[700px]">
                 {selectedInfo.description ?? "Untitled"}
               </h3>
             </div>
@@ -120,7 +120,7 @@ export function Modal({ display, selectedInfo, closeModal }: ModalProps) {
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    className="w-6 h-6 mr-2.5"
+                    className="w-6 h-6 mr-1 md:mr-2.5"
                   >
                     <path
                       strokeLinecap="round"

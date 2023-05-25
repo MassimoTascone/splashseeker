@@ -5,7 +5,7 @@ interface SearchProps {
 export function HeroSearch({ searchValue }: SearchProps) {
   const handleChange = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      const value = e.currentTarget.value;
+      const value = (e.target as HTMLInputElement).value;
       searchValue(value);
     }
   };
@@ -31,6 +31,7 @@ export function HeroSearch({ searchValue }: SearchProps) {
           placeholder="Search your image..."
           onKeyDown={handleChange}
         />
+
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
