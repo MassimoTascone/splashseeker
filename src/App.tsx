@@ -11,7 +11,7 @@ import { Footer } from "./components/Footer";
 import { Suggestions } from "./components/Suggestions";
 
 const URL = import.meta.env.PROD
-  ? "https://zealous-fawn-fedora.cyclic.app/"
+  ? "https://zealous-fawn-fedora.cyclic.app"
   : "http://localhost:8000";
 
 function App() {
